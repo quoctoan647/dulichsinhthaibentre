@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+            background: #e0f7fa;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-top: 50px;
+            color: #333;
+            text-transform: uppercase;
+            padding: 20px;
+            background-color: #80deea;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        h1:hover {
+            transform: scale(1.1);
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            background-color: #00796b;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu a:hover {
+            background-color: #004d40;
+            transform: scale(1.1);
+        }
+        .menu-container {
+    background-color: rgba(0, 128, 0, 0.6); /* Màu xanh lá nhạt hơn với độ mờ 60% */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%; /* Độ rộng tùy chỉnh */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(5px); /* Làm mờ nền bên dưới (tùy chọn) */
+}
+
+
+
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        .text, .image {
+            width: 48%;
+            transition: transform 0.3s ease;
+        }
+
+        .text p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .image:hover img {
+            transform: scale(1.05);
+        }
+
+        .bubble, .bubble2, .green-bubble {
+            position: absolute;
+            background: rgba(0, 255, 0, 0.3);
+            border-radius: 50%;
+            animation: moveBubble 7s infinite;
+        }
+
+        .bubble {
+            top: 10%;
+            left: 20%;
+            background: rgba(0, 0, 255, 0.3);
+            width: 120px;
+            height: 120px;
+        }
+
+        .bubble2 {
+            top: 40%;
+            left: 60%;
+            background: rgba(0, 0, 255, 0.3);
+            width: 150px;
+            height: 150px;
+        }
+
+        .green-bubble {
+            top: 60%;
+            left: 30%;
+            width: 100px;
+            height: 100px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes moveBubble {
+            0% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-150px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+        }
+
+        a {
+            display: inline-block;
+            margin: 20px;
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        .comment-section {
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 2px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .comment-box {
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .response-button, .submit-button {
+            padding: 5px 10px;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .response-button:hover, .submit-button:hover {
+            background-color: #666;
+        }
+
+        .comment-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .response {
+            margin-left: 20px;
+            font-style: italic;
+        }
+
+        .response-input {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        .submit-response-button {
+            padding: 5px 10px;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-response-button:hover {
+            background-color: #666;
+        }
+
+        .comment {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comment-body {
+            margin-top: 5px;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        .heart {
+            font-size: 20px;
+            cursor: pointer;
+            color: #ff5c8d;
+        }
+
+        .heart.liked {
+            color: #e60000;
+        }
+       /* Khung chứa dòng chữ "Các hoạt động vui chơi tại vườn dừa" */
+.activities-container {
+    text-align: center;
+    margin: 50px auto; /* Đặt margin auto để căn giữa khung */
+    background-color: #00796b; /* Màu nền đậm hơn cho khung chứa */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tăng độ đậm của bóng đổ */
+    display: block; /* Chắc chắn rằng khung sẽ là một block element */
+    max-width: 90%; /* Đảm bảo khung vừa đủ cho dòng chữ */
+    border: 3px solid #004d40; /* Thêm viền đậm hơn cho khung */
+}
+
+.activities-container h2 {
+    font-size: 2.5em;
+    color: white; /* Màu chữ sáng để nổi bật trên nền đậm */
+    margin: 0; /* Không có margin dưới dòng chữ */
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Chỉnh sửa bảng hoạt động */
+.activities-table {
+    border-collapse: collapse;
+    width: 80%;
+    text-align: left;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Căn giữa bảng */
+}
+
+.activities-table th, .activities-table td {
+    padding: 12px;
+    border: 1px solid #b2dfdb; /* Thêm màu nhẹ cho các cạnh của bảng */
+    font-size: 1.1em;
+}
+
+.activities-table tr:nth-child(even) {
+    background-color: #f0f4f4; /* Màu nền cho các dòng chẵn */
+}
+
+.activities-table th {
+    background-color: #00796b; /* Màu nền tiêu đề cột */
+    color: white; /* Màu chữ tiêu đề cột */
+    font-size: 1.3em;
+}
+
+.activities-table td {
+    color: #333;
+}
+
+/* Hiệu ứng hover cho các dòng trong bảng */
+.activities-table tr:hover {
+    background-color: #e0f7fa; /* Màu nền khi di chuột qua dòng */
+    transform: scale(1.02);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+       
+    </style>
+</head>
+<body>
+
+    <!-- Bong bóng xanh dương -->
+    <div class="bubble"></div>
+    <div class="bubble2"></div>
+    <!-- Bong bóng xanh lá -->
+    <div class="green-bubble"></div>
+
+    <h1>Thông tin liên hệ</h1>
+    
+
+
+    
+    <!-- Thêm phần bảng Các hoạt động vui chơi tại vườn dừa -->
+<div class="activities-container">
+    <h2>Liên hệ với chúng tôi qua các thông tin sau</h2>
+    <table class="activities-table">
+        <tr>
+            <td>Họ và tên</td>
+            <td>Số điện thoại</td>
+            <td>Email</td>
+        
+        <tr>
+            <td>Trần Phát Huy</td>
+            <td>0867464637</td>
+            <td>Phathuy2106@gmail.com</td>
+        </tr>
+        <tr>
+            <td>Phạm Quốc Toàn</td>
+            <td>0326711269</td>
+            <td>phamqtoan647@gmail.com</td>
+        </tr>
+        <tr>
+            <td> Phan Hồ Huỳnh Hương</td>
+            <td>0346696749</td>
+            <td>phanhohuynhhuong211@gmail.com</td>
+
+        </tr>
+        <tr>
+            <td>Trần Thị Ái Vy</td>
+            <td>0336017174</td>
+            <td>tranaivy0912@gmail.com</td>
+        </tr>
+        
+        
+    </table>
+</div>
+    
+
+    
+    
+
+    <a href="index.html">Quay lại trang chính</a>
+
+    
+    </script>
+</body>
+</html>

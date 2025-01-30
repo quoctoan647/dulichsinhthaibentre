@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện ảnh vườn dừa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(0, 128, 0, 0.2);
+    border: 2px solid #008000;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%; /* Ensures the heading does not stretch too wide */
+}
+
+
+        .bubble {
+            position: absolute;
+            background: rgba(0, 255, 0, 0.3);
+            border-radius: 50%;
+            animation: moveBubble 7s infinite;
+        }
+
+        .bubble1 {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+        }
+
+        .bubble2 {
+            width: 120px;
+            height: 120px;
+            top: 40%;
+            left: 70%;
+        }
+
+        .bubble3 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 30%;
+        }
+
+        @keyframes moveBubble {
+            0% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-150px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+        }
+
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px;
+            justify-content: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.1);
+        }
+
+        .back-button {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #008000;
+            color: white;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button a:hover {
+            background-color: #004d00;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bubble bubble1"></div>
+    <div class="bubble bubble2"></div>
+    <div class="bubble bubble3"></div>
+
+    <h1>Vẻ đẹp của vườn dừa Bến Tre</h1>
+
+    <div class="image-container">
+        <img src="https://baodongkhoi.vn/image/fckeditor/upload/2019/20191121/images/dua.jpg" alt="Ảnh 1">
+        <img src="https://img5.thuthuatphanmem.vn/uploads/2021/11/10/hinh-anh-thu-hoach-dua-o-ben-tre_022746467.jpg" alt="Ảnh 2">
+        <img src="https://dubaothoitiet.info/Uploads/images/ve-dep-rang-dua-tinh-ben-tre.jpg" alt="Ảnh 3">
+        <img src="https://thegioicaygiong.com/wp-content/uploads/2022/08/vuon-dua.jpg" alt="Ảnh 4">
+        <img src="https://i.pinimg.com/originals/e6/3f/36/e63f3677ade28279259da81154358521.png" alt="Ảnh 5">
+        <img src="https://cohafu.com/files/upload/tin-tuc/news/dua-ben-tre.jpg" alt="Ảnh 6">
+        <img src="https://mia.vn/media/uploads/blog-du-lich/ve-rung-dua-ben-tre-ngam-nhin-ve-dep-thanh-binh-gian-di-1-1667816558.jpg" alt="Ảnh 7">
+        <img src="https://congluan-cdn.congluan.vn/files/content/2023/12/16/ben-tre-moi-goi-dau-tu-ve-du-lich-234137942.jpg" alt="Ảnh 8">
+        <img src="https://aloduasap.com/wp-content/uploads/2020/05/dua-xiem-luc-la-gi.jpg" alt="Ảnh 9">
+        <img src="https://th.bing.com/th/id/R.baf0214ae9ff0d9361666fa1455f04da?rik=%2bpemGoCaeRO9Dg&riu=http%3a%2f%2f3.bp.blogspot.com%2f-rlASC1VXsCM%2fTrt7zGJ0dJI%2fAAAAAAAAAlA%2fB8KupAeLICw%2fs1600%2fCay%2bdua.jpg&ehk=XuDZg%2f9M%2bB5EMW0lRnuUC1XJUgpH2gCQLBUuog%2fZXNE%3d&risl=&pid=ImgRaw&r=0" alt="Ảnh 10">
+        <img src='https://scontent.iocvnpt.com/resources/portal/Images/BTE/superadminportal.bte/2023/03_2023/dua_trong_du_lich_ben_tre_2023_1632023_1_232770403.jpg' alt='Ảnh 11'>
+        <img src='https://thamhiemmekong.com/wp-content/uploads/2020/02/con-phung.jpg' alt='Ảnh 12'>
+    </div>
+
+    <div class="back-button">
+        <a href="vuon-dua.html">Quay lại</a>
+    </div>
+
+</body>
+</html>

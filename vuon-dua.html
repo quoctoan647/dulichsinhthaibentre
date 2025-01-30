@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vườn Dừa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+            background: #e0f7fa;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-top: 50px;
+            color: #333;
+            text-transform: uppercase;
+            padding: 20px;
+            background-color: #80deea;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        h1:hover {
+            transform: scale(1.1);
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            background-color: #00796b;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu a:hover {
+            background-color: #004d40;
+            transform: scale(1.1);
+        }
+        .menu-container {
+    background-color: rgba(0, 128, 0, 0.6); /* Màu xanh lá nhạt hơn với độ mờ 60% */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%; /* Độ rộng tùy chỉnh */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(5px); /* Làm mờ nền bên dưới (tùy chọn) */
+}
+
+
+
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        .text, .image {
+            width: 48%;
+            transition: transform 0.3s ease;
+        }
+
+        .text p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .image:hover img {
+            transform: scale(1.05);
+        }
+
+        .bubble, .bubble2, .green-bubble {
+            position: absolute;
+            background: rgba(0, 255, 0, 0.3);
+            border-radius: 50%;
+            animation: moveBubble 7s infinite;
+        }
+
+        .bubble {
+            top: 10%;
+            left: 20%;
+            background: rgba(0, 0, 255, 0.3);
+            width: 120px;
+            height: 120px;
+        }
+
+        .bubble2 {
+            top: 40%;
+            left: 60%;
+            background: rgba(0, 0, 255, 0.3);
+            width: 150px;
+            height: 150px;
+        }
+
+        .green-bubble {
+            top: 60%;
+            left: 30%;
+            width: 100px;
+            height: 100px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes moveBubble {
+            0% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-150px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+        }
+
+        a {
+            display: inline-block;
+            margin: 20px;
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        .comment-section {
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 2px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .comment-box {
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .response-button, .submit-button {
+            padding: 5px 10px;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .response-button:hover, .submit-button:hover {
+            background-color: #666;
+        }
+
+        .comment-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .response {
+            margin-left: 20px;
+            font-style: italic;
+        }
+
+        .response-input {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        .submit-response-button {
+            padding: 5px 10px;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-response-button:hover {
+            background-color: #666;
+        }
+
+        .comment {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comment-body {
+            margin-top: 5px;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        .heart {
+            font-size: 20px;
+            cursor: pointer;
+            color: #ff5c8d;
+        }
+
+        .heart.liked {
+            color: #e60000;
+        }
+       /* Khung chứa dòng chữ "Các hoạt động vui chơi tại vườn dừa" */
+.activities-container {
+    text-align: center;
+    margin: 50px auto; /* Đặt margin auto để căn giữa khung */
+    background-color: #00796b; /* Màu nền đậm hơn cho khung chứa */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tăng độ đậm của bóng đổ */
+    display: block; /* Chắc chắn rằng khung sẽ là một block element */
+    max-width: 90%; /* Đảm bảo khung vừa đủ cho dòng chữ */
+    border: 3px solid #004d40; /* Thêm viền đậm hơn cho khung */
+}
+
+.activities-container h2 {
+    font-size: 2.5em;
+    color: white; /* Màu chữ sáng để nổi bật trên nền đậm */
+    margin: 0; /* Không có margin dưới dòng chữ */
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Chỉnh sửa bảng hoạt động */
+.activities-table {
+    border-collapse: collapse;
+    width: 80%;
+    text-align: left;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Căn giữa bảng */
+}
+
+.activities-table th, .activities-table td {
+    padding: 12px;
+    border: 1px solid #b2dfdb; /* Thêm màu nhẹ cho các cạnh của bảng */
+    font-size: 1.1em;
+}
+
+.activities-table tr:nth-child(even) {
+    background-color: #f0f4f4; /* Màu nền cho các dòng chẵn */
+}
+
+.activities-table th {
+    background-color: #00796b; /* Màu nền tiêu đề cột */
+    color: white; /* Màu chữ tiêu đề cột */
+    font-size: 1.3em;
+}
+
+.activities-table td {
+    color: #333;
+}
+
+/* Hiệu ứng hover cho các dòng trong bảng */
+.activities-table tr:hover {
+    background-color: #e0f7fa; /* Màu nền khi di chuột qua dòng */
+    transform: scale(1.02);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+       
+    </style>
+</head>
+<body>
+
+    <!-- Bong bóng xanh dương -->
+    <div class="bubble"></div>
+    <div class="bubble2"></div>
+    <!-- Bong bóng xanh lá -->
+    <div class="green-bubble"></div>
+
+    <h1>Vườn Dừa</h1>
+    <!-- Thanh bảng chọn -->
+    <div class="menu-container">
+    <div class="menu">
+        <a href="anhvuondua.html">Thư viện ảnh</a>
+        <a href="https://www.google.com/maps/place/V%C6%B0%E1%BB%9Dn+d%E1%BB%ABa+-+b%C6%B0%E1%BB%9Fi+da+xanh+T%C6%B0+Nhi%E1%BB%81u/@10.2592762,106.3919584,16.43z/data=!4m8!3m7!1s0x310aa94c58dccbfb:0x1d0b3360899c409d!8m2!3d10.2586533!4d106.3923997!9m1!1b1!16s%2Fg%2F11fjv_4sdh?hl=vi-VN&entry=ttu&g_ep=EgoyMDI1MDEyMC4wIKXMDSoASAFQAw%3D%3D">Xem Đánh giá</a>
+       <a href='bookvuondua.html'>Book tour</a>
+    </div>
+</div>
+
+
+    <!-- Đoạn nội dung đầu tiên -->
+    <div class="content">
+        <div class="text">
+            <p>Du lịch vườn dừa ở tỉnh Bến Tre mang đến trải nghiệm hòa mình với thiên nhiên, với những vườn dừa bát ngát xanh mướt. Khách du lịch có cơ hội khám phá quy trình trồng và chăm sóc dừa, từ việc thu hoạch trái đến sản xuất các sản phẩm thủ công mỹ nghệ từ dừa. Ngoài ra, du khách còn được thưởng thức các món ăn đặc sản độc đáo chế biến từ dừa như kẹo dừa, nước dừa tươi và nhiều món ăn khác.</p>
+        </div>
+        <div class="image">
+            <img src="https://th.bing.com/th/id/R.b3ca29d1e8a9d39ffbb4371dd1a8cf6e?rik=aQM8HFxAErKhPg&riu=http%3a%2f%2fcdn1.vietnamtourism.org.vn%2fimages%2fcontent%2f2015-12-03.10.39.29-ben-tre-coconut-homeland.jpg&ehk=x0o9dSMO1gGI86Psuan9%2bz8zU5SqONoHlf3KgqF5BPo%3d&risl=&pid=ImgRaw&r=0" alt="Vườn dừa">
+        </div>
+    </div>
+
+    <!-- Đoạn nội dung thứ hai, đổi bên với ảnh -->
+    <div class="content">
+        <div class="image">
+            <img src="https://th.bing.com/th/id/OIP.o4YAAPWF6MKOMFrc-AcOFQHaE8?rs=1&pid=ImgDetMain" alt="Hoạt động du lịch Bến Tre">
+        </div>
+        <div class="text">
+            <p>Bên cạnh việc tham quan vườn dừa, du khách còn có thể tham gia các hoạt động giải trí và trải nghiệm văn hóa địa phương như đi thuyền trên sông nước, tham quan các làng nghề truyền thống và tìm hiểu về văn hóa, lịch sử địa phương. Những trải nghiệm này không chỉ giúp du khách thư giãn, mà còn mang lại hiểu biết sâu sắc hơn về cuộc sống và con người nơi đây. Tỉnh Bến Tre, với vẻ đẹp tự nhiên và sự mến khách của người dân, đã trở thành một điểm đến hấp dẫn cho những ai yêu thích thiên nhiên và muốn khám phá nét đẹp văn hóa độc đáo của miền Tây Nam Bộ.</p>
+        </div>
+    </div>
+    <!-- Thêm phần bảng Các hoạt động vui chơi tại vườn dừa -->
+<div class="activities-container">
+    <h2>Lịch trình chung vui chơi tại vườn dừa</h2>
+    <table class="activities-table">
+        <tr>
+            <td>Thời gian</td>
+            <td>Hoạt động</td>
+            <td>Giá cả</td>
+        
+        <tr>
+            <td>8h-9h30</td>
+            <td>Du lịch bằng thuyền nhỏ: Tham quan các kênh nhỏ với thuyền đòi. Bạn có thể tận hưởng không khí trong lành và cảnh quan thiên nhiên của các vườn dừa.</td>
+            <td>50,000</td>
+        </tr>
+        <tr>
+            <td>9h45-11h</td>
+            <td>Thăm xưởng đường dừa: Khám phá quy trình sản xuất đường dừa và thưởng thức các loại đường dừa đa dạng như dừa Pandan, dừa Durian, và dừa Cocoa.</td>
+            <td>Miễn phí</td>
+        </tr>
+        <tr>
+            <td> 11h15-12h45</td>
+            <td>Thưởng thức ẩm thực địa phương: Thưởng thức các món ăn đặc sản như bánh dừa, cá heo đào, và ốc nấu sữa dừa.</td>
+            <td>Tùy món ăn</td>
+
+        </tr>
+        <tr>
+            <td>13h-14h30</td>
+            <td>Du lịch bằng xe đạp: Khám phá khu vực xung quanh Bến Tre bằng xe đạp, tận hưởng cảnh quan nông thôn và các ruộng lúa nước.</td>
+            <td>20,000</td>
+        </tr>
+        <tr>
+            <td>14h45-16h</td>
+            <td>Tham quan khu bảo tồn Vam Ho: Khám phá khu bảo tồn Vam Ho với nhiều loài chim và cảnh quan thiên nhiên đa dạng.</td>
+            <td>40,000</td>
+        </tr>
+        <tr>
+            <td>16h15-17h30</td>
+            <td>Khám phá làng nghề truyền thống: Tham quan các làng nghề truyền thống như làng gốm gạo, làng làm bánh dừa, và làng làm đồ dùng từ gỗ dừa.</td>
+            <td>Miễn phí</td>
+            
+        </tr>
+        <tr>
+            <td>17h45-1830</td>
+            <td>Mua sắm các mặt hàng địa phương: Mua sắm các sản phẩm địa phương như đường dừa, đồ dùng làm từ gỗ dừa, và các mặt hàng thủ công mỹ nghệ.</td>
+            <td>Tùy sản phẩm</td>
+        </tr>
+    </table>
+    <p><strong><em>Lưu ý: Lịch trình chỉ mang tính chất tham khảo, có thể thay đổi tùy theo nhu cầu của khách du lịch.</em></strong></p>
+</div>
+    
+
+    <!-- Video được chèn vào -->
+    <div class="video-container" style="text-align: center; margin: 30px 0;">
+        <iframe 
+            width="850" 
+            height="450" 
+            src="https://www.youtube.com/embed/q50ti_OPEko?si=g39RlddS4drXZ6WB" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    
+
+    <a href="index.html">Quay lại trang chính</a>
+
+    <!-- Phần bình luận -->
+    <div class="comment-section">
+        <h2>Bình luận</h2>
+        
+        <!-- Comment box -->
+        <div class="comment-box" contenteditable="true" id="commentBox">
+            <p>Bạn có thể viết bình luận tại đây...</p>
+        </div>
+        
+        <div class="comment-actions">
+            <button class="submit-button" onclick="saveComment()">Đăng</button>
+        </div>
+
+        <div id="commentsList">
+            <!-- Bình luận sẽ hiển thị ở đây -->
+        </div>
+    </div>
+
+    <script>
+        // Thêm bình luận mới
+        function saveComment() {
+            var commentText = document.getElementById("commentBox").innerText;
+            if(commentText.trim()) {
+                var commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+                commentDiv.innerHTML = `
+                    <div class="comment-header">
+                        <span>Người dùng</span>
+                        <div>
+                            <span class="heart" onclick="toggleLike(this)">&#9829;</span>
+                            <span class="like-count">0</span>
+                        </div>
+                    </div>
+                    <div class="comment-body">${commentText}</div>
+                    <div class="comment-actions">
+                        <button class="response-button" onclick="replyComment(this)">Trả lời</button>
+                    </div>
+                    <div class="response-input" contenteditable="true"></div>
+                    <button class="submit-response-button" onclick="submitResponse(this)">Đăng trả lời</button>
+                `;
+                document.getElementById('commentsList').appendChild(commentDiv);
+                document.getElementById("commentBox").innerText = ""; // Xóa nội dung trong hộp bình luận
+            }
+        }
+
+        // Tính năng thả tim
+        function toggleLike(heart) {
+            heart.classList.toggle('liked');
+            const likeCount = heart.nextElementSibling;
+            let currentCount = parseInt(likeCount.innerText);
+            currentCount = heart.classList.contains('liked') ? currentCount + 1 : currentCount - 1;
+            likeCount.innerText = currentCount;
+        }
+
+        // Trả lời bình luận
+        function replyComment(button) {
+            const responseInput = button.closest('.comment').querySelector('.response-input');
+            responseInput.style.display = 'block';
+        }
+
+        // Đăng trả lời
+        function submitResponse(button) {
+            const responseText = button.closest('.comment').querySelector('.response-input').innerText;
+            if (responseText.trim() !== '') {
+                alert('Đã gửi trả lời!');
+                displayResponse(responseText, button.closest('.comment'));
+            }
+        }
+
+        // Hiển thị trả lời
+        function displayResponse(responseText, commentDiv) {
+            const responseDiv = document.createElement('div');
+            responseDiv.classList.add('response');
+            responseDiv.innerHTML = `Trả lời: ${responseText}`;
+            commentDiv.appendChild(responseDiv);
+            commentDiv.querySelector('.response-input').style.display = 'none'; // Ẩn input sau khi trả lời
+        }
+        // Lưu bình luận vào LocalStorage
+function saveComment() {
+    var commentText = document.getElementById("commentBox").innerText;
+    if(commentText.trim()) {
+        var commentDiv = document.createElement('div');
+        commentDiv.classList.add('comment');
+        commentDiv.innerHTML = `
+            <div class="comment-header">
+                <span>Người dùng</span>
+                <div>
+                    <span class="heart" onclick="toggleLike(this)">&#9829;</span>
+                    <span class="like-count">0</span>
+                </div>
+            </div>
+            <div class="comment-body">${commentText}</div>
+            <div class="comment-actions">
+                <button class="response-button" onclick="replyComment(this)">Trả lời</button>
+            </div>
+            <div class="response-input" contenteditable="true"></div>
+            <button class="submit-response-button" onclick="submitResponse(this)">Đăng trả lời</button>
+        `;
+        document.getElementById('commentsList').appendChild(commentDiv);
+        document.getElementById("commentBox").innerText = ""; // Xóa nội dung trong hộp bình luận
+
+        // Lưu bình luận vào LocalStorage
+        saveCommentsToLocalStorage();
+    }
+}
+
+// Lưu tất cả bình luận vào LocalStorage
+function saveCommentsToLocalStorage() {
+    var comments = [];
+    var commentDivs = document.querySelectorAll('.comment');
+    commentDivs.forEach(function(commentDiv) {
+        var commentText = commentDiv.querySelector('.comment-body').innerText;
+        var likes = commentDiv.querySelector('.like-count').innerText;
+        var responses = [];
+        var responseDivs = commentDiv.querySelectorAll('.response');
+        responseDivs.forEach(function(responseDiv) {
+            responses.push(responseDiv.innerText);
+        });
+        comments.push({
+            text: commentText,
+            likes: likes,
+            responses: responses
+        });
+    });
+
+    localStorage.setItem('comments', JSON.stringify(comments)); // Lưu bình luận vào LocalStorage
+}
+
+// Hiển thị bình luận từ LocalStorage
+function loadCommentsFromLocalStorage() {
+    var comments = JSON.parse(localStorage.getItem('comments'));
+    if (comments) {
+        comments.forEach(function(comment) {
+            var commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            commentDiv.innerHTML = `
+                <div class="comment-header">
+                    <span>Người dùng</span>
+                    <div>
+                        <span class="heart" onclick="toggleLike(this)">&#9829;</span>
+                        <span class="like-count">${comment.likes}</span>
+                    </div>
+                </div>
+                <div class="comment-body">${comment.text}</div>
+                <div class="comment-actions">
+                    <button class="response-button" onclick="replyComment(this)">Trả lời</button>
+                </div>
+                <div class="response-input" contenteditable="true"></div>
+                <button class="submit-response-button" onclick="submitResponse(this)">Đăng trả lời</button>
+            `;
+
+            // Hiển thị các trả lời
+            comment.responses.forEach(function(response) {
+                var responseDiv = document.createElement('div');
+                responseDiv.classList.add('response');
+                responseDiv.innerHTML = `Trả lời: ${response}`;
+                commentDiv.appendChild(responseDiv);
+            });
+
+            document.getElementById('commentsList').appendChild(commentDiv);
+        });
+    }
+}
+
+// Tính năng thả tim
+function toggleLike(heart) {
+    heart.classList.toggle('liked');
+    const likeCount = heart.nextElementSibling;
+    let currentCount = parseInt(likeCount.innerText);
+    currentCount = heart.classList.contains('liked') ? currentCount + 1 : currentCount - 1;
+    likeCount.innerText = currentCount;
+
+    // Lưu lại khi thích một bình luận
+    saveCommentsToLocalStorage();
+}
+
+// Trả lời bình luận
+function replyComment(button) {
+    const responseInput = button.closest('.comment').querySelector('.response-input');
+    responseInput.style.display = 'block';
+}
+
+// Đăng trả lời
+function submitResponse(button) {
+    const responseText = button.closest('.comment').querySelector('.response-input').innerText;
+    if (responseText.trim() !== '') {
+        alert('Đã gửi trả lời!');
+        displayResponse(responseText, button.closest('.comment'));
+    }
+}
+
+// Hiển thị trả lời
+function displayResponse(responseText, commentDiv) {
+    const responseDiv = document.createElement('div');
+    responseDiv.classList.add('response');
+    responseDiv.innerHTML = `Trả lời: ${responseText}`;
+    commentDiv.appendChild(responseDiv);
+    commentDiv.querySelector('.response-input').style.display = 'none'; // Ẩn input sau khi trả lời
+
+    // Lưu lại khi có trả lời
+    saveCommentsToLocalStorage();
+}
+
+// Tải lại bình luận khi trang tải lại
+window.onload = function() {
+    loadCommentsFromLocalStorage();
+}
+
+    </script>
+</body>
+</html>

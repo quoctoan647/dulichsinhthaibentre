@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện ảnh sân chim</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(0, 128, 0, 0.2);
+    border: 2px solid #008000;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%; /* Ensures the heading does not stretch too wide */
+}
+
+
+        .bubble {
+            position: absolute;
+            background: rgba(0, 255, 0, 0.3);
+            border-radius: 50%;
+            animation: moveBubble 7s infinite;
+        }
+
+        .bubble1 {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+        }
+
+        .bubble2 {
+            width: 120px;
+            height: 120px;
+            top: 40%;
+            left: 70%;
+        }
+
+        .bubble3 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 30%;
+        }
+
+        @keyframes moveBubble {
+            0% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-150px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+        }
+
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px;
+            justify-content: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.1);
+        }
+
+        .back-button {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #008000;
+            color: white;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button a:hover {
+            background-color: #004d00;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bubble bubble1"></div>
+    <div class="bubble bubble2"></div>
+    <div class="bubble bubble3"></div>
+
+    <h1>Chiêm ngưỡng sân chim Vàm Hồ</h1>
+
+    <div class="image-container">
+        <img src="https://media2.gody.vn/public/images/destination/1/83/san-chim-vam-ho/pl623c26c8ae486-1648109256.jpeg" alt="Ảnh 1">
+        <img src="https://s3-ap-southeast-1.amazonaws.com/mytourcdn.com/resources/pictures/locations/nqj1379989919.jpg" alt="Ảnh 2">
+        <img src="https://media.mia.vn/uploads/blog-du-lich/chuyen-di-trai-nghiem-san-chim-vam-ho-ben-tre-day-thu-vi-04-1666101421.jpeg" alt="Ảnh 3">
+        <img src="https://tripzone.vn/uploads/202107/27/06/082411-fb-d--ng-thu-.jpg" alt="Ảnh 4">
+        <img src="https://th.bing.com/th/id/OIP.7l8sFEC7YktDkOnu1cKczAAAAA?rs=1&pid=ImgDetMain" alt="Ảnh 5">
+        <img src="https://i1.wp.com/dulichdongque.com/wp-content/uploads/2019/01/san-chim-vam-ho-2.jpg" alt="Ảnh 6">
+        <img src="https://th.bing.com/th/id/R.28d34c38b382df58f5aad2f655caa4bc?rik=h9tRqum3WScSvQ&pid=ImgRaw&r=0" alt="Ảnh 7">
+        <img src="https://thamhiemmekong.com/wp-content/uploads/2020/08/sanchimvamhobentre.jpg" alt="Ảnh 8">
+        <img src="https://th.bing.com/th/id/OIP.LZNMYFOOSeeZgRgoAio1xgHaE7?rs=1&pid=ImgDetMain" alt="Ảnh 9">
+        <img src="https://th.bing.com/th/id/OIP.UbbeTpQzNo2xtZObWItnQgHaFj?rs=1&pid=ImgDetMain" alt="Ảnh 10">
+        <img src='https://th.bing.com/th/id/OIP.WRsX2HGkx9XWe3GR0HfnggHaE2?rs=1&pid=ImgDetMain' alt='Ảnh 11'>
+        <img src='https://1.bp.blogspot.com/-XWtioGqr8j4/XudWRVohR_I/AAAAAAAEX8A/NOBTcphKwT0LHtLn0TWye9uaKvsMcmL3QCLcBGAsYHQ/s1600/San%2Bchim%2BVam%2BHo%2B1.jpg' alt='Ảnh 12'>
+    </div>
+
+    <div class="back-button">
+        <a href="san-chim.html">Quay lại</a>
+    </div>
+
+</body>
+</html>

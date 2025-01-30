@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Khám phá du lịch sinh thái tại tỉnh Bến Tre, miền Tây Việt Nam với những vườn dừa xanh mát, sông nước hữu tình và văn hóa đậm đà bản sắc dân tộc.">
+    <title>Du Lịch Sinh Thái Bến Tre</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #d4f1f4, #75e6da);
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        header {
+            background: linear-gradient(to right, #008891, #0f4c75);
+            color: white;
+            padding: 10px 5px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 5px 10px;
+            font-weight: bold;
+            transition: color 0.3s, background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            color: white;
+            background-color: #008891;
+        }
+
+        .hero {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            position: relative;
+            z-index: 2;
+            padding: 10px;
+            border: 2px solid #0f4c75;
+            background-color: rgba(15, 76, 117, 0.2);
+            border-radius: 10px;
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            border: 5px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .slideshow img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slideshow img.active {
+            opacity: 1;
+        }
+
+        section {
+            padding: 5px 10px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro h2 {
+            font-size: 1.8rem;
+            color: #008891;
+            margin: 5px 0;
+        }
+
+        .intro p {
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            flex: 1;
+            min-width: 280px;
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            padding: 10px;
+            background: linear-gradient(to right, #0f4c75, #008891);
+            color: white;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            padding: 10px;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .card a {
+            display: block;
+            text-align: center;
+            padding: 8px;
+            background: #0f4c75;
+            color: white;
+            text-decoration: none;
+            border-radius: 0 0 10px 10px;
+            transition: background 0.3s;
+        }
+
+        .card a:hover {
+            background: #008891;
+        }
+
+        footer {
+            text-align: center;
+            background: #0f4c75;
+            color: white;
+            padding: 15px 0;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #d4f1f4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background: #0f4c75;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .scroll-top:hover {
+            transform: scale(1.1);
+        }
+
+        .floating-icon {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            font-size: 2.5rem;
+            color: #75e6da;
+            animation: floatIcon 5s infinite ease-in-out;
+        }
+
+        @keyframes floatIcon {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, 0) scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -80px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -160px) scale(0.8);
+            }
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: rise 10s infinite;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .message-container {
+    background: rgba(15, 76, 117, 0.4); /* Màu nền mờ của khung */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px auto;
+    max-width: 600px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Thêm bóng cho khung */
+}
+
+.star {
+    position: absolute;
+    width: 5px;  /* Tăng kích thước ngôi sao */
+    height: 5px; /* Tăng kích thước ngôi sao */
+    background-color: yellow; /* Màu vàng cho sao */
+    border-radius: 50%;
+    animation: twinkle 1.5s infinite ease-in-out;
+    opacity: 0; /* Bắt đầu với độ mờ */
+}
+
+@keyframes twinkle {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+.share-button {
+    position: fixed;
+    bottom: 50px;
+    right: 100px; /* Đặt cách nút cuộn lên một khoảng */
+    background: #008891;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, background 0.3s;
+}
+
+.share-button:hover {
+    transform: scale(1.1);
+    background: #0f4c75;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Du Lịch Sinh Thái Bến Tre</h1>
+        <p>Khám phá xứ dừa xanh mát với vẻ đẹp sông nước hữu tình</p>
+    </header>
+
+    <nav>
+        <a href="#gioithieu">Trang chủ</a>
+        <a href="https://www.google.com/maps/@9.9910114,106.6089532,12.67z?entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D">Vị trí</a>
+        <a href="lienhe.html"> Liên hệ</a>
+    </nav>
+
+    <div class="hero">
+        <h1>Chào mừng bạn đến với Bến Tre</h1>
+        <div class="slideshow">
+            <img src="https://files.dandautu.vn/images/administrative-maps/c-53-1681201050-7711.jpg" alt="Bản đồ Bến Tre" class="active">
+            <img src="https://media.vneconomy.vn/w800/images/upload/2023/09/12/bt-1.jpeg" alt="Khung cảnh Bến Tre">
+        </div>
+    </div>
+
+    <section id="gioithieu">
+        <div class="intro">
+            <h2><a href='https://vi.wikipedia.org/wiki/B%E1%BA%BFn_Tre'>Về Bến Tre</a></h2>
+            <p>Bến Tre, còn được biết đến với biệt danh "Xứ dừa", là một tỉnh thuộc vùng Đồng bằng sông Cửu Long của Việt Nam. Tỉnh nổi tiếng với các sản phẩm từ dừa và phong cảnh yên bình, tươi mát. Đặc trưng của Bến Tre là các kênh rạch chằng chịt, vườn cây ăn trái phong phú và bầu không khí trong lành. Du lịch sinh thái ở Bến Tre mang đến cho du khách những trải nghiệm gắn liền với thiên nhiên, văn hóa và lối sống truyền thống của người dân miền Tây Nam Bộ. Đây là điểm đến lý tưởng cho những ai muốn tìm kiếm sự thư giãn và khám phá văn hóa độc đáo của Việt Nam.</p>
+        </div>
+    </section>
+
+    <section id="diadiem">
+         <h2>Địa Điểm Tham Quan Hàng Đầu</h2>
+        <div class="content">
+            <div class="card">
+                <img src="https://dulichvn.org.vn/nhaptin/uploads/images/cayduabentre.jpg" alt="Vườn Dừa">
+                <h3>Vườn Dừa</h3>
+                <p>Khám phá những vườn dừa xanh mát và tìm hiểu về nghề làm kẹo dừa truyền thống.</p>
+                <a href="vuon-dua.html">Tìm hiểu thêm</a>
+            </div>
+            <div class="card">
+                <img src="https://th.bing.com/th/id/R.9ac635f43683e9fb3174f1b8a4bd23bb?rik=IDfKJAj4YoUWqw&riu=http%3a%2f%2fbantour.net%2fimages%2f2017%2f08%2fsan-chim-vam-ho-750x477.jpg&ehk=KOUSBAuI8%2bCTvw6MVLJWhKz7eTahvHmjfzalrT1lgzY%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" alt="Sông Nước">
+                <h3>Sân chim Vàm Hồ</h3>
+                <p>Đến với sân chim Vàm Hồ để ngắm nhìn vẻ đẹp của thiên nhiên cùng những chú chim bay nhảy liên tục. </p>
+                <a href="san-chim.html">Tìm hiểu thêm</a>
+            </div>
+            <div class="card">
+                <img src="https://nhakhachcongdoan.com.vn/uploads/Baiviet/nha-khach-ben-tre.jpg" alt="Chợ Làng">
+                <h3>Cồn Phụng</h3>
+                <p>Tham quan cồn Phụng để trải nghiệm cuộc sống sông nước của người dân miền Tây</p>
+                <a href="con-phung.html">Tìm hiểu thêm</a>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <button class="scroll-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">&uarr;</button>
+
+    <div class="floating-icon">🌴</div>
+    <div class="message-container">
+    <p class="message">Chúc bạn có một trải nghiệm vui vẻ và hài lòng với những gợi ý mà chúng tôi đưa ra<3</p>
+    <div class="stars"></div> <!-- Thêm phần chứa ngôi sao -->
+</div>
+<button class="share-button" onclick="sharePage()">🔗 Chia sẻ</button>
+
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slideshow img');
+        const totalSlides = slides.length;
+
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }, 3500);
+
+        function createBubble() {
+            const bubble = document.createElement('div');
+            const size = Math.random() * 50 + 10;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.left = `${Math.random() * window.innerWidth}px`;
+            bubble.style.animationDuration = `${Math.random() * 5 + 3}s`;
+            bubble.className = 'bubble';
+            document.body.appendChild(bubble);
+
+            setTimeout(() => {
+                bubble.remove();
+            }, 8000);
+        }
+
+        setInterval(createBubble, 500);
+        function createStars() {
+    const starsContainer = document.querySelector('.stars'); // Chọn phần chứa sao
+    for (let i = 0; i < 50; i++) { // Tạo 50 ngôi sao
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = `${Math.random() * 100}%`; // Vị trí ngẫu nhiên
+        star.style.left = `${Math.random() * 100}%`; // Vị trí ngẫu nhiên
+        star.style.animationDuration = `${Math.random() * 2 + 1}s`; // Thời gian nhấp nháy ngẫu nhiên
+        starsContainer.appendChild(star);
+    }
+}
+
+// Gọi hàm tạo sao khi trang tải
+createStars();
+function sharePage() {
+    if (navigator.share) {
+        navigator.share({
+            title: document.title,
+            url: window.location.href
+        }).then(() => {
+            alert('Cảm ơn bạn đã chia sẻ!');
+        }).catch((error) => {
+            console.error('Lỗi chia sẻ:', error);
+        });
+    } else {
+        const tempInput = document.createElement("input");
+        document.body.appendChild(tempInput);
+        tempInput.value = window.location.href;
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        alert("Đã sao chép liên kết trang web. Bạn có thể dán và chia sẻ với bạn bè!");
+    }
+}
+
+
+
+    </script>
+    
+
+</body>
+</html>
